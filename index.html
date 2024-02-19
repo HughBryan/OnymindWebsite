@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link rel = "stylesheet" href = "styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
-
-</head>
-<body class = "main-content">
-    <header class="section header active" id = "home">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="main-content">        
+    <div class="top"></div>
+    <header class="section home active" id="home">
         <div class="header-content">
-
-            <div class="main-button" data-id = rentals>
-                <h1 class="main-header">Rentals</h1>
-            </div>
-
-            <div class="main-button" data-id = DOP>
-                <h1 class="main-header">DOP Work</h1>
-            </div>
-
-            <div class="main-button" data-id = gaff>
-                <h1 class="main-header">Gaff Work</h1>
-            </div>
-
-            <div class="main-button" data-id = contact>
-                <h1 class="main-header">Contact Me</h1>
-            </div>
-
+        <div class="main-button rentals" data-id="rentals">
+          <h1>Rentals</h1>
         </div>
+
+        <div class="main-button DOP" data-id="DOP">
+          <h1>DOP Work</h1>
+        </div>
+
+        <div class="main-button gaff" data-id="gaff">
+          <h1>Gaff Work</h1>
+        </div>
+
+        <div class="main-button contact" data-id="contact">
+          <h1>Contact Me</h1>
+        </div>
+      </div>
     </header>
     <main>
-        <section class="section rentals" id = "rentals"></section>
-        <section class="section DOP" id = "DOP"></section>
-        <section class="section gaff" id = "gaff"></section>
-        <section class="section contact" id = "contact"></section>
-
-
+      <section class="section rentals" id="rentals"></section>
+      <section class="section DOP" id="DOP"></section>
+      <section class="section gaff" id="gaff"></section>
+      <section class="section contact" id="contact"></section>
     </main>
 
-    <div class = "controls">
-        <div class="control control-1 active-button" data-id = "home">
-            <i class="fa-solid fa-house-chimney"></i>
-        </div>
-
+    <div class="home-button-con">
+      <div class="main-button home-button active-button" data-id="home">
+        <i class="fa-solid fa-house-chimney"></i>
+      </div>
     </div>
-    
-    <script src = "app.js" ></script>
-</body>
+
+    <script src="app.js"></script>
+  </body>
 </html>

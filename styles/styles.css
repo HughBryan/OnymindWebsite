@@ -9,7 +9,7 @@
     --color-primary: #f1f1f1;
     --color-white: white;
     --color-gray-1: #42423e;
-    --color-secondary-1: rgb(255, 145, 0);
+    --color-secondary-1: rgb(63, 165, 255);
 
     --box-shadow-1: 0 3px 15px rgba(0,0,0,.20);
 }
@@ -78,6 +78,8 @@ section{
     padding: 3rem 10rem;
 }
 
+
+
 .header-content{
     border: 1px solid;
     position: absolute;
@@ -91,6 +93,8 @@ section{
     .main-button{
         padding-top:1em;
         cursor: pointer;
+        transition: all .4s ease-in-out;
+
 
         h1{
             color: var(--color-gray-1);
@@ -98,13 +102,31 @@ section{
           }
 
     }
+    .main-button:hover{
+        transition: all .4s ease-in-out;
+        transform: translateY(-2px);
+        
+        h1{
+            color: var(--color-secondary-1)
+        };
+    }
+}
+
+.top{
+    height:2px;
+    top:0%;
+    z-index:1;
+    width:100%;
+    background-color: var(--color-gray-1);
+    position:absolute;
+    overflow:visible
 }
 
 
-.controls{
+.home-button-con{
     position: fixed;
     z-index: 10;
-    top: 5%;
+    top: 6%;
     left: 3%;
     display: flex;
     align-items: center;
@@ -124,7 +146,7 @@ section{
 
 
 
-    .control{
+    .home-button{
         padding: 1rem;
         cursor: pointer;
         background-color: var(--color-secondary-1);
@@ -152,8 +174,7 @@ section{
             pointer-events: none;
         }            
     }
-    
-    .control:hover{
+    .home-button:hover{
         
         background: linear-gradient(225deg, var(--color-selected-1), var(--color-secondary-4));
         box-shadow:  -5px 5px 0px var(--color-primary-2),5px -5px 0px var(--color-highlight-2);
@@ -161,3 +182,4 @@ section{
         transform: translateY(-2px);
     }
 }
+
