@@ -4,8 +4,14 @@ const sections = document.querySelectorAll(".section");
 const sectionBtns = document.querySelectorAll(".controls");
 // Actual button
 const sectionBtn = document.querySelectorAll(".main-button");
+
+ 
 // Body
 const allSections = document.querySelector(".main-content");
+
+const videoplayer = document.querySelectorAll(".project-hover");
+
+const videos = document.querySelectorAll(".video-player")
 
 function PageTransitions(){
     // 
@@ -28,8 +34,43 @@ function PageTransitions(){
             }
         })
     }
+}
 
+function videochanger()
+{
+
+
+    // Click on video.
+    for (let i = 0; i < videoplayer.length;i++)
+    {
+        videoplayer[i].addEventListener("click", (e)=>{
+            let currentplayer = document.querySelectorAll (".active-player");
+            if (currentplayer[0])
+            {
+                currentplayer[0].classList.remove("active-player");
+            }
+            
+            const id = e.currentTarget.dataset.id;
+            if (id)
+            {
+                videos.forEach((video)=>{
+                    video.classList.remove("active-player");
+                })
+                const element = document.getElementById(id);
+                element.classList.add("active-player")
+            }
+        })
+    }  
+
+    // Add event listen to remove video when clicking anywhere on body. 
+/*     
+    allSections.addEventListener("click",(e) =>{
+        videos.forEach((video)=>{
+            video.classList.remove("active-player");
+        })
+    }) */
 
 }
 
 PageTransitions();
+videochanger();
