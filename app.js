@@ -13,6 +13,8 @@ const videoplayer = document.querySelectorAll(".project-hover");
 
 const videos = document.querySelectorAll(".video-player")
 
+const showcase = document.querySelector(".showcase-wrapper")
+
 function PageTransitions(){
     // 
     for(let i = 0; i < sectionBtn.length;i++)
@@ -51,6 +53,7 @@ function videochanger()
             }
             
             const id = e.currentTarget.dataset.id;
+            console.log(id);
             if (id)
             {
                 videos.forEach((video)=>{
@@ -62,15 +65,20 @@ function videochanger()
         })
     }  
 
-    // Add event listen to remove video when clicking anywhere on body. 
-/*     
-    allSections.addEventListener("click",(e) =>{
-        videos.forEach((video)=>{
-            video.classList.remove("active-player");
-        })
-    }) */
 
+    allSections.addEventListener('click', function(e){   
+        if (!(document.getElementById('showcase-wrapper').contains(e.target))){
+            // Clicked in box
+            videos.forEach((video)=>{
+                if (video.classList.contains("active-player")){
+                    video.classList.remove("active-player");
+                }
+        })
+        } 
+
+        });
 }
+
 
 PageTransitions();
 videochanger();
