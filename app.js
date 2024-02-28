@@ -42,11 +42,12 @@ function videoChanger()
 {
 
     const videoplayer = document.querySelectorAll(".project-hover");
+    const videos = document.querySelectorAll(".video-player")
 
     // Click on video.
     for (let i = 0; i < videoplayer.length;i++)
     {
-        console.log(videoplayer[i])
+
         videoplayer[i].addEventListener("click", (e)=>{
             let currentplayer = document.querySelectorAll (".active-player");
             if (currentplayer[0])
@@ -70,8 +71,10 @@ function videoChanger()
 
     allSections.addEventListener('click', function(e){   
         if (!(document.getElementById('showcase-wrapper').contains(e.target))){
-            // Clicked in box
+            // Clicked in box 
+            console.log("clucked");
             videos.forEach((video)=>{
+
                 if (video.classList.contains("active-player")){
                     video.classList.remove("active-player");
                 }
