@@ -10,7 +10,6 @@ const sectionBtn = document.querySelectorAll(".main-button");
 const allSections = document.querySelector(".main-content");
 
 
-const videos = document.querySelectorAll(".video-player")
 
 const showcase = document.querySelector(".showcase-wrapper")
 
@@ -42,11 +41,11 @@ function videoChanger()
 {
 
     const videoplayer = document.querySelectorAll(".project-hover");
+    const videos = document.querySelectorAll(".video-player")
 
     // Click on video.
     for (let i = 0; i < videoplayer.length;i++)
     {
-        console.log(videoplayer[i])
         videoplayer[i].addEventListener("click", (e)=>{
             let currentplayer = document.querySelectorAll (".active-player");
             if (currentplayer[0])
@@ -55,7 +54,6 @@ function videoChanger()
             }
             
             const id = e.currentTarget.dataset.id;
-            console.log(id);
             if (id)
             {
                 videos.forEach((video)=>{
@@ -90,6 +88,8 @@ const list = document.querySelector(".list");
 const listcard = document.querySelector(".listCard");
 const total = document.querySelector(".total");
 const quantity = document.querySelector(".quanity");
+const rentalBody = document.querySelector(".rental-con")
+
 
 function loadGallery()
 {
@@ -105,7 +105,6 @@ function addDataToHtml(products)
 {
     
     const showcase = document.querySelector(".showcase-wrapper");
-    console.log
     showcase.innerHtml="";
 
     let count = 1;
@@ -115,9 +114,9 @@ function addDataToHtml(products)
 
         newProduct.innerHTML = `<div class="showcase-row">
         <div class="item-grid">
-          <img src="${product["image1"]}" alt="" />
-          <img src="${product["image2"]}" alt="" />
-          <img src="${product["image3"]}" alt="" />
+          <img loading = "lazy" src="${product["image1"]}" alt="" />
+          <img loading = "lazy" src="${product["image2"]}" alt="" />
+          <img loading = "lazy" src="${product["image3"]}" alt="" />
         </div>
 
         <div class="project-hover" data-id="video-player-${count}">
@@ -127,7 +126,7 @@ function addDataToHtml(products)
       </div>
 
       <div class="video-player" id="video-player-${count}">
-        <iframe
+        <iframe loading = "lazy"
           width="1600"
           height="900"
           src="${product["url"]}"
@@ -142,8 +141,24 @@ function addDataToHtml(products)
         count+=1;
     })
 
+    
     // Add video transition ability. 
     videoChanger();
+}
+
+function loadRental()
+{
+    fetch('rental.json').then(response=>response.json()).then(data=>{
+        products = data;
+        window.onload = addRentalProducts(products);
+        
+    })
+}
+
+function addRentalProducts(products){
+    for (productSection in products){
+
+    }
 }
 
 
@@ -188,6 +203,7 @@ function rentalTransition(){
 }
 
 loadGallery();
+loadRental();
 PageTransitions();
 videoChanger();
 rentalTransition();
