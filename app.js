@@ -68,8 +68,10 @@ function videoChanger()
 
     allSections.addEventListener('click', function(e){   
         if (!(document.getElementById('showcase-wrapper').contains(e.target))){
-            // Clicked in box
+            // Clicked in box 
+            console.log("clucked");
             videos.forEach((video)=>{
+
                 if (video.classList.contains("active-player")){
                     video.classList.remove("active-player");
                 }
