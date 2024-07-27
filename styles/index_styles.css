@@ -27,6 +27,8 @@
 
 
     --box-shadow-1: 0 3px 15px rgba(0,0,0,.20);
+
+    --font-family: "cactus_jackregular";
 }
 
 body{
@@ -261,6 +263,7 @@ header{
 }    
 
 
+
 .showcase-row{
     position: relative;
     transition: all .4s ease-in-out;
@@ -273,6 +276,7 @@ header{
 
     /*Main variable that changes max size of the gird.*/
     max-width: 900px;
+    
     
 
     
@@ -295,6 +299,8 @@ header{
                 padding:4px;
 
             }
+
+
     }
     .project-hover{
         border: inherit;
@@ -331,14 +337,99 @@ header{
 
 }
 
+
 .rental-con{
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    row-gap:70px;
+    /*Remove later */
+    font-family: Arial, Helvetica, sans-serif;
     width:100%;
     margin:auto;
     transition:0.5s;
+
+    .section-container{
+        display:flex;
+        flex-direction: column;
+        row-gap:15px;
+        position:relative;
+        align-items: center;
+
+
+
+        .product-grid{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            column-gap:20px;
+            row-gap:20px;
+    
+            .product-card{
+                border-radius: 10px;
+                box-shadow: var(--box-shadow-1);     
+                display:flex;
+                flex-direction: column;
+                position: relative;
+                align-items: center;
+                margin: auto;
+                height: 100%;
+                width: 100%;
+    
+                div{
+                    margin: 10px;
+                    font-size:70%;
+                }
+    
+                img{
+    
+                    min-height: 150px;
+                    max-height:200px;
+    
+                    object-fit: contain;
+                    width: 100%;
+                    text-align: center;
+                    padding:4px;
+                }
+
+                button{
+                    display:flex;
+                    background-color: var(--color-primary);
+                    width:100%;
+                    justify-content: center;
+                    align-items:center;
+                    cursor: pointer;            
+                    border: 1px solid black;                    
+                    border-radius: 5px;
+                }
+    
+            }
+    
+        }        
+    }
+
+
 }
 
 
+
+
+.item_card{
+    position: relative;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    img{
+
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+        text-align: center;
+        padding:4px;
+    }
+}
+
 .rental-card{
+    font-family: Arial, Helvetica, sans-serif;
     position:fixed;
     top:0;
     left:100%;
@@ -355,6 +446,27 @@ header{
         display:flex;
         align-items:center;
     }
+
+
+    .listCard li{
+        display: grid;
+        grid-template-columns: 100px repeat(3,1fr);
+        color: white;
+        row-gap:10px;
+        margin-bottom: 20px;
+        
+        div{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+
+        img{
+            width:90%;
+        }
+    }
+    
+
     .checkout{
         position:absolute;
         bottom:0;

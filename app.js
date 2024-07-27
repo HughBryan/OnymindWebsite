@@ -69,7 +69,6 @@ function videoChanger()
     allSections.addEventListener('click', function(e){   
         if (!(document.getElementById('showcase-wrapper').contains(e.target))){
             // Clicked in box 
-            console.log("clucked");
             videos.forEach((video)=>{
 
                 if (video.classList.contains("active-player")){
@@ -148,22 +147,92 @@ function addDataToHtml(products)
     videoChanger();
 }
 
+let rental_products = null;
 function loadRental()
 {
     fetch('rental.json').then(response=>response.json()).then(data=>{
-        products = data;
-        window.onload = addRentalProducts(products);
+        rental_products = data;
+        window.onload = addRentalProducts(rental_products);
         
     })
 }
 
-function addRentalProducts(products){
-    for (productSection in products){
+function addRentalProducts(rental_products){
+    for (productSection in rental_products){
+        let sectionContainer = document.createElement("div");
+        sectionContainer.classList.add("section-container");
 
+        let new_ls_con = document.createElement("div");
+        new_ls_con.classList.add("product-grid");
+        
+        let sectionTitle = document.createElement("h2");
+        sectionTitle.classList.add("section-title");
+        sectionTitle.innerHTML = `
+        ${productSection}
+        `;
+
+
+        sectionContainer.appendChild(sectionTitle);
+        sectionContainer.appendChild(new_ls_con)
+        rentalBody.appendChild(sectionContainer)
+
+        for (product_index in rental_products[String(productSection)]){
+            item = rental_products[String(productSection)][product_index]
+
+
+            let new_card = document.createElement("div");
+            new_card.classList.add("product-card");
+            new_card.innerHTML =
+                `
+                <img src = "${item["image"]}"/>
+                <div class = "title">${item["name"]}</div>
+                <div class = "price">$${item["price"]}</div>
+                <button onclick = "addToCard('${productSection}',${product_index})">Add To Cart</button>
+                `
+            new_ls_con.appendChild(new_card);
+            
+        }
     }
 }
 
+let listcards = {};
+function addToCard(productSection,key){
+    console.log(rental_products)
+    console.log(productSection,key)
+    if (listcards[productSection+key] == null){
+        listcards[productSection+key] = rental_products[productSection][key];
+        listcards[productSection+key].quantity = 1;
+    }
+    reloadCard();
+}
 
+function reloadCard(){
+
+    console.log(listcards)
+    listcard.innerHTML = '';
+    let count = 0;
+    let totalPrice = 0;
+    for (const [key,value] of Object.entries(listcards)){
+        totalPrice = totalPrice + Number(value['price']);
+        count = count+value["quantity"];
+
+        if(value != null){
+            let newDiv = document.createElement("li");
+            newDiv.innerHTML = `
+            <div><img src = "${value["image"]}"/></div>
+            <div>${value["name"]}</div>
+            <div>$${value["price"]}</div>
+            <div>${value["quantity"]}</div>
+            <div>
+
+            </div>
+            `;
+            listcard.appendChild(newDiv);
+
+        }
+    }
+    total.innerText = "$"+String(totalPrice);
+}
 
 
 function rentalTransition(){
@@ -205,7 +274,7 @@ function rentalTransition(){
 }
 
 loadGallery();
-loadRental();
 PageTransitions();
 videoChanger();
 rentalTransition();
+loadRental();
