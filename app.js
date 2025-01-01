@@ -197,8 +197,7 @@ function addRentalProducts(rental_products){
 
 let listcards = {};
 function addToCard(productSection,key){
-    console.log(rental_products)
-    console.log(productSection,key)
+
     if (listcards[productSection+key] == null){
         listcards[productSection+key] = rental_products[productSection][key];
         listcards[productSection+key].quantity = 1;
@@ -208,21 +207,19 @@ function addToCard(productSection,key){
 
 function reloadCard(){
 
-    console.log(listcards)
     listcard.innerHTML = '';
     let count = 0;
     let totalPrice = 0;
     for (const [key,value] of Object.entries(listcards)){
         totalPrice = totalPrice + Number(value['price']);
         count = count+value["quantity"];
-
         if(value != null){
             let newDiv = document.createElement("li");
             newDiv.innerHTML = `
             <div><img src = "${value["image"]}"/></div>
             <div>${value["name"]}</div>
             <div>$${value["price"]}</div>
-            <div>${value["quantity"]}</div>
+            <button class="${key}" onclick="removeButton(this)">Remove</button>
             <div>
 
             </div>
@@ -230,8 +227,19 @@ function reloadCard(){
             listcard.appendChild(newDiv);
 
         }
+
+
     }
     total.innerText = "$"+String(totalPrice);
+}
+
+function removeButton(button){
+    const parentDiv = button.parentElement;
+    parentDiv.remove();
+    delete listcards[button.classList]
+    reloadCard()
+
+
 }
 
 
