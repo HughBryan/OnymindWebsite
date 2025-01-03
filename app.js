@@ -4,15 +4,21 @@ const sections = document.querySelectorAll(".section");
 const sectionBtns = document.querySelectorAll(".controls");
 // Actual button
 const sectionBtn = document.querySelectorAll(".main-button");
-
- 
 // Body
 const allSections = document.querySelector(".main-content");
-
-
-
+const body = document.querySelector("body");
+// Showcase
 const showcase = document.querySelector(".showcase-wrapper")
 
+
+// Rental Switch
+document.getElementById("rentals").addEventListener("click",()=>{window.location.href = "rental.html"});
+document.getElementById("shopping-cart").addEventListener("click",()=>{window.location.href = "rental.html"});
+
+
+
+
+// Function to transition between DOP & Gaff Pages etc.
 function PageTransitions(){
     // 
     for(let i = 0; i < sectionBtn.length;i++)
@@ -36,7 +42,7 @@ function PageTransitions(){
     }
 }
 
-
+// Function that changes the video player.
 function videoChanger()
 {
 
@@ -80,18 +86,8 @@ function videoChanger()
         });
 }
 
-const rentalSection = document.querySelector(".rentals");
 
-const body = document.querySelector("body");
-const openShopping = document.querySelector(".shopping-cart");
-const closeShopping = document.querySelector(".closeShopping");
-const list = document.querySelector(".list");
-const listcard = document.querySelector(".listCard");
-const total = document.querySelector(".total");
-const quantity = document.querySelector(".quanity");
-const rentalBody = document.querySelector(".rental-con")
-
-
+// Load the gallery from a  JSON file then add the data to the html page.
 function loadGallery()
 {
     
@@ -102,6 +98,7 @@ function loadGallery()
     })
 }
 
+// From a JSON file that has been fetched. Load in rows with 3 columns.
 function addDataToHtml(products)
 {
     
@@ -147,142 +144,9 @@ function addDataToHtml(products)
     videoChanger();
 }
 
-let rental_products = null;
-function loadRental()
-{
-    fetch('rental.json').then(response=>response.json()).then(data=>{
-        rental_products = data;
-        window.onload = addRentalProducts(rental_products);
-        
-    })
-}
 
-function addRentalProducts(rental_products){
-    for (productSection in rental_products){
-        let sectionContainer = document.createElement("div");
-        sectionContainer.classList.add("section-container");
-
-        let new_ls_con = document.createElement("div");
-        new_ls_con.classList.add("product-grid");
-        
-        let sectionTitle = document.createElement("h2");
-        sectionTitle.classList.add("section-title");
-        sectionTitle.innerHTML = `
-        ${productSection}
-        `;
-
-
-        sectionContainer.appendChild(sectionTitle);
-        sectionContainer.appendChild(new_ls_con)
-        rentalBody.appendChild(sectionContainer)
-
-        for (product_index in rental_products[String(productSection)]){
-            item = rental_products[String(productSection)][product_index]
-
-
-            let new_card = document.createElement("div");
-            new_card.classList.add("product-card");
-            new_card.innerHTML =
-                `
-                <img src = "${item["image"]}"/>
-                <div class = "title">${item["name"]}</div>
-                <div class = "price">$${item["price"]}</div>
-                <button onclick = "addToCard('${productSection}',${product_index})">Add To Cart</button>
-                `
-            new_ls_con.appendChild(new_card);
-            
-        }
-    }
-}
-
-let listcards = {};
-function addToCard(productSection,key){
-
-    if (listcards[productSection+key] == null){
-        listcards[productSection+key] = rental_products[productSection][key];
-        listcards[productSection+key].quantity = 1;
-    }
-    reloadCard();
-}
-
-function reloadCard(){
-
-    listcard.innerHTML = '';
-    let count = 0;
-    let totalPrice = 0;
-    for (const [key,value] of Object.entries(listcards)){
-        totalPrice = totalPrice + Number(value['price']);
-        count = count+value["quantity"];
-        if(value != null){
-            let newDiv = document.createElement("li");
-            newDiv.innerHTML = `
-            <div><img src = "${value["image"]}"/></div>
-            <div>${value["name"]}</div>
-            <div>$${value["price"]}</div>
-            <button class="${key}" onclick="removeButton(this)">Remove</button>
-            <div>
-
-            </div>
-            `;
-            listcard.appendChild(newDiv);
-
-        }
-
-
-    }
-    total.innerText = "$"+String(totalPrice);
-}
-
-function removeButton(button){
-    const parentDiv = button.parentElement;
-    parentDiv.remove();
-    delete listcards[button.classList]
-    reloadCard()
-
-
-}
-
-
-function rentalTransition(){
-    openShopping.addEventListener('click', ()=>{
-
-
-        // If rental section is not open, open rental section with the cart open.
-        if (! rentalSection.classList.contains("active"))
-        {
-            sections.forEach((section) => {
-                section.classList.remove("active");
-            })
-            rentalSection.classList.add("active");
-
-            body.classList.add("active-rental");
-        }   
-        // Else, either close or open the cart as the rental page is open.        
-        else{
-
-            if (body.classList.contains("active-rental"))
-            {
-                body.classList.remove("active-rental");
-            }
-            else{
-                body.classList.add("active-rental");
-
-            }            
-        }
-        
-
-
-    });
-
-    closeShopping.addEventListener('click', ()=>{
-        body.classList.remove("active-rental");
-    });
-
-
-}
 
 loadGallery();
 PageTransitions();
 videoChanger();
-rentalTransition();
-loadRental();
+
