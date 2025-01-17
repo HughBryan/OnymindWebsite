@@ -273,7 +273,7 @@ header {
     align-items: center;
     flex-direction: column;
     transition: all 0.2s ease-in-out;
-    background-color: var(--color-primary);
+    background-color: var(--color-1mary);
     border: 1px inset var(--color-gray-1);
 
     /*Glass affect. Remove below 5 lines if oscar doesn't like.*/
@@ -300,3 +300,6 @@ header {
 .active-rental .rental-con {
   transform: translateX(-200px);
 }
+
+
+
