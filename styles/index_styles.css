@@ -231,7 +231,7 @@ header {
 
 .showcase-row {
   position: relative;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
   align-items: center;
   margin: auto;
   height: 100%;
@@ -272,7 +272,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: all 0.2s ease-in-out;
+    transition: all .1s ease-in-out;
     background-color: var(--color-1mary);
     border: 1px inset var(--color-gray-1);
 
@@ -286,12 +286,17 @@ header {
     opacity: 0;
     transform: scale(1);
   }
+  .proj-title{
+    font-size: 2rem;
+  }
 
   .project-hover:hover {
     opacity: 1;
     transform: scale(1);
   }
 }
+
+
 
 .active-rental .rental-card {
   left: calc(100% - 500px);

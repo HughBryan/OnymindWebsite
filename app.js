@@ -15,6 +15,8 @@ const showcase = document.querySelector(".showcase-wrapper")
 document.getElementById("rentals").addEventListener("click",()=>{window.location.href = "rental.html"});
 document.getElementById("shopping-cart").addEventListener("click",()=>{window.location.href = "rental.html"});
 
+// Contact Me Switch
+document.getElementById("contact").addEventListener("click",()=>{window.location.href = "contact.html"});
 
 
 
@@ -118,22 +120,25 @@ function addDataToHtml(products)
         </div>
 
         <div class="project-hover" data-id="video-player-${count}">
-          <h2 class="proj-title">Project Title</h2>
-          <h3 class="proj-description">Oscar Dewis | Gaffer & Dapper</h3>
+          <h1 class="proj-title">${product["title"]}</h1>
         </div>
       </div>
-
+`   
+        if (product["url"] != null){
+        newProduct.innerHTML += `
       <div class="video-player" id="video-player-${count}">
         <iframe loading = "lazy"
           width="1600"
           height="900"
           src="${product["url"]}"
-          title="JAIM - All My All (Official Music Video)"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></iframe>
-      </div>`;
+      </div>`;            
+        }
+
+
       showcase.appendChild(newProduct);
 
         count+=1;

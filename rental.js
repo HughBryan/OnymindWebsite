@@ -2,6 +2,7 @@
 const rentalSection = document.querySelector(".rentals");
 const body = document.querySelector("body");
 const openShopping = document.querySelector(".shopping-cart");
+const cartNumber = document.getElementById("cart-count");
 const closeShopping = document.querySelector(".closeShopping");
 const list = document.querySelector(".list");
 const listcard = document.querySelector(".listCard");
@@ -130,6 +131,10 @@ function reloadCart(){
 
     }
     total.innerText = "$"+String(totalPrice);
+    cartNumber.textContent = count
+
+    
+
 }
 
 // Is the remove button in the shopping cart. 
@@ -180,16 +185,11 @@ function rentalTransition(){
     });
 }
 
-function checkoutTransition(){
-    total.addEventListener('click',()=>{
-        console.log("checkout");
-    }
-)}
+
 
 
 
 rentalTransition();
-checkoutTransition();
 loadRental();
 reloadCart();
 
