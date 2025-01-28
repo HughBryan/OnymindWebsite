@@ -45,7 +45,7 @@ function addRentalProducts(rental_products){
         let sectionTitle = document.createElement("h2");
         sectionTitle.classList.add("section-title");
         sectionTitle.innerHTML = `
-        ${productSection}
+        ${productSection} Hire
         `;
 
 

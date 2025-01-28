@@ -1,5 +1,5 @@
 {
-  "CAMERA": [
+  "Camera": [
     {
       "image": "Images/Oscar_Resources/RENTAL PHOTOS/CAMERA/(CANON EF) TO (SONY E MOUNT) METABONES IV ADAPTER HIRE \uf022\uf022 $35.jpeg",
       "price": "35",
@@ -41,7 +41,7 @@
       "name": "SONY FX6 CAMERA (SONY E-MOUNT) HIRE"
     }
   ],
-  "CONTINUOUS LIGHTING": [
+  "Continous Lighting": [
     {
       "image": "Images/Oscar_Resources/RENTAL PHOTOS/CONTINUOUS LIGHTING/APUTURE ACCENT B7C BULB LED LIGHT HIRE \uf022\uf022 $20.jpeg",
       "price": "20",
@@ -78,7 +78,7 @@
       "name": "NANLITE PAVOTUBE II 30X RGBWW LED LIGHT HIRE"
     }
   ],
-  "GRIP": [
+  "Grip": [
     {
       "image": "Images/Oscar_Resources/RENTAL PHOTOS/GRIP/40\uf020 X 40\uf020 MATTHEWS REFLECTOR \uf022\uf022 $35.webp",
       "price": "35",
@@ -135,7 +135,7 @@
       "name": "SUPER CLAMP HIRE"
     }
   ],
-  "LIGHTING ACCS": [
+  "Lighting ACCS": [
     {
       "image": "Images/Oscar_Resources/RENTAL PHOTOS/LIGHTING ACCS/APUTURE 26\u00b0 SPOTLIGHT MOUNT HIRE \uf022\uf022 $45.jpg",
       "price": "45",
@@ -172,7 +172,7 @@
       "name": "NANLITE FRESNEL (FORZA SERIES) HIRE"
     }
   ],
-  "POWER": [
+  "Power": [
     {
       "image": "Images/Oscar_Resources/RENTAL PHOTOS/POWER/25M EXTENTION CABLE HIRE \uf022\uf022 $10.jpeg",
       "price": "10",
