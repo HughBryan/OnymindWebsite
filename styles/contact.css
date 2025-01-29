@@ -55,24 +55,34 @@
     overflow: hidden;
   }
   
+.section {
+  display: none;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-primary);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  padding: 3rem 10rem; /* Default padding for larger screens */
+  margin: 0;
+  box-sizing: border-box; /* Include padding and borders in width/height calculations */
+}
+
+/* Styles for tablets and smaller devices */
+@media (max-width: 768px) {
   .section {
-    display: none;
-    transition: all 0.4s ease-in-out;
-    background-color: var(--color-primary);
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-    left: 0;
-    top: 0;
-    padding: 1rem 10rem;
-    margin: 0;
-    min-height: 100vh;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 3rem 14rem;
+    padding: 2rem 5rem; /* Reduce horizontal and vertical padding for tablets */
   }
+}
+
+/* Styles for phones and very small screens */
+@media (max-width: 480px) {
+  .section {
+    padding: 1.5rem 1rem; /* Further reduce padding for small devices */
+  }
+}
+
   
   .active {
     display: block;
@@ -90,36 +100,7 @@
       opacity: 1;
     }
   }
-  
-  .header-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    vertical-align: center;
-  
-    .main-button {
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-      vertical-align: center;
-  
-      h1 {
-        height: 90px;
-        color: var(--color-gray-1);
-        font-size: 4rem;
-      }
-    }
-    .main-button:hover {
-      transition: all 0.2s ease-in-out;
-      transform: translateY(-2px);
-  
-      h1 {
-        color: var(--color-secondary-1);
-      }
-    }
-  }
-  
+
   .top {
     height: 2px;
     top: 0%;
@@ -203,7 +184,6 @@
   }
 
   
-
   .container {
     max-width: 800px;
     margin: 2rem auto;
@@ -211,27 +191,27 @@
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
-
+  
   .section-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     color: #333;
   }
-
+  
   .form-group {
-
     margin-bottom: 1.5rem;
   }
-
+  
   label {
     display: block;
     margin-bottom: 0.5rem;
     color: #555;
     font-size: 1rem;
   }
-
+  
   input, select, textarea {
     width: 100%;
     padding: 0.75rem;
@@ -240,12 +220,12 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-
+  
   input:focus, select:focus, textarea:focus {
     border-color: #7e57c2;
     outline: none;
   }
-
+  
   .checkout-items {
     border: 1px solid #ccc;
     padding: 1rem;
@@ -253,12 +233,12 @@
     border-radius: 4px;
     background: #f9f9f9;
   }
-
+  
   .checkout-items p {
     margin: 0.5rem 0;
     color: #444;
   }
-
+  
   .checkout-summary {
     display: flex;
     justify-content: space-between;
@@ -266,7 +246,7 @@
     font-size: 1rem;
     color: #444;
   }
-
+  
   .button {
     background-color: #7e57c2;
     color: #fff;
@@ -277,65 +257,75 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
+  
   .button:hover {
     background-color: #5e3fa8;
   }
-
+  
+  /* Responsive adjustments for tablets */
   @media (max-width: 768px) {
     .container {
-      padding: 1rem;
+      padding: 1rem; /* Reduce padding */
+      max-width: 90%; /* Make the form fit smaller screens */
     }
-
+  
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.25rem; /* Reduce title size */
     }
-
+  
     input, select, textarea {
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Slightly smaller input fields */
+      padding: 0.65rem; /* Reduce padding */
+    }
+  
+    .button {
+      padding: 0.75rem; /* Reduce button padding */
+      font-size: 0.9rem; /* Adjust button text size */
+    }
+  
+    .checkout-summary {
+      flex-direction: column; /* Stack items vertically */
+      font-size: 0.9rem; /* Reduce font size */
+      gap: 0.5rem; /* Add spacing between items */
     }
   }
-
-  li {
-    display: flex; /* Use Flexbox for horizontal alignment */
-    align-items: center; /* Vertically align items */
-    justify-content: space-between; /* Space out items */
-    height: auto; /* Flexible height based on content */
-    padding: 10px 20px; /* Add inner spacing */
-    background-color: #f9f9f9; /* Light background */
-    border: 1px solid #ddd; /* Subtle border for separation */
-    border-radius: 8px; /* Rounded corners */
-    margin-bottom: 15px; /* Space between listcards */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    font-size: calc(12px + 0.5vw); /* Scales with screen size */
-
-    .image{
-      flex: 1; /* Allow image container to adjust proportionally */
-      max-width: 100px; /* Optional: Restrict max width */
-      height: auto; /* Maintain aspect ratio */
-      margin-right: 15px; /* Space between image and text */
-      img{
-        width: 100%; /* Make image fill container */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: cover; /* Ensure the image covers the container without distortion */
-        border-radius: 5px; /* Optional: Rounded corners */
-      }
+  
+  /* Responsive adjustments for mobile devices */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.5rem; /* Compact padding for very small screens */
     }
-
-
-    div {
-      flex: 2; /* Equal space for all divs */
-      text-align: center; /* Center align text within each div */
-      height: 100%; /* Match the listcard height */
-      display: flex; /* Use Flexbox to align content inside */
-      justify-content: center; /* Center content horizontally */
-      align-items: center; /* Center content vertically */
-      padding: 5px; /* Add inner spacing */ 
-      font-size: small;
+  
+    .section-title {
+      font-size: 1rem; /* Smaller title font size */
     }
-}
-
-.error {
+  
+    input, select, textarea {
+      font-size: 0.8rem; /* Further reduce input text size */
+      padding: 0.5rem; /* Reduce padding */
+    }
+  
+    .button {
+      padding: 0.5rem; /* Compact button padding */
+      font-size: 0.8rem; /* Smaller button font size */
+    }
+  
+    .checkout-summary {
+      flex-direction: column; /* Ensure vertical stacking */
+      font-size: 0.8rem; /* Compact summary text */
+    }
+  
+    .checkout-items {
+      padding: 0.75rem; /* Reduce padding inside checkout items */
+    }
+  
+    label {
+      font-size: 0.8rem; /* Reduce label font size */
+    }
+  }
+  
+  .error {
     color: red;
     font-size: 0.7em;
-}
+  }
+  
