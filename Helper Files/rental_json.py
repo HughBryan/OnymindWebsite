@@ -3,7 +3,7 @@ import json
 
 
 
-path = "Images/Oscar_Resources/RENTAL PHOTOS"
+path = "images/Oscar_Resources/RENTAL PHOTOS"
 
 data_ls = []
 json_data = json
