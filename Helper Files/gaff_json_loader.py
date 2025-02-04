@@ -8,7 +8,7 @@ def read_file(file_name):
         text = rtf_to_text(content)
         return text
 
-path = "Images/Oscar_Resources/Gaff Work"
+path = "images/Oscar_Resources/GAFF WORK"
 
 count = 1
 

@@ -139,9 +139,16 @@ function reloadCart(){
 
 // Is the remove button in the shopping cart. 
 function removeButton(button){
-    const parentDiv = button.parentElement;
-    parentDiv.remove();
-    delete listcards[button.id]
+
+    listcards[button.id].quantity-=1;
+    if (listcards[button.id].quantity <= 0)
+    {
+        const parentDiv = button.parentElement;
+        parentDiv.remove();
+        delete listcards[button.id]
+    }
+
+
     sessionStorage.setItem("checkout",JSON.stringify(listcards));
 
     reloadCart()
