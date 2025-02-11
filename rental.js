@@ -13,7 +13,7 @@ const rentalBody = document.querySelector(".rental-con")
 
 
 // Home button Switch & 
-document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "index.html"});
+document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "home.html"});
 
 // Checkout page button
 document.getElementById("total").addEventListener("click",()=>{window.window.location.href = "checkout.html"});

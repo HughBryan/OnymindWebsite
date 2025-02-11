@@ -49,14 +49,8 @@ a {
   font-family: inheret;
 }
 
-header {
-  height: 100vh;
-  color: var(--color-white);
-  overflow: hidden;
-}
 
 .section {
-  display: none;
   transition: all 0.4s ease-in-out;
   background-color: var(--color-primary);
   min-height: 100vh;
@@ -64,24 +58,32 @@ header {
   position: relative;
   left: 0;
   top: 0;
-  padding: 3rem 10rem; /* Default padding for larger screens */
+  padding: 0rem 10rem; /* Default padding for larger screens */
   margin: 0;
   box-sizing: border-box; /* Include padding and borders in width/height calculations */
 }
 
-/* Styles for tablets and smaller devices */
-@media (max-width: 768px) {
+/* Medium screens (tablets, small desktops) */
+@media (max-width: 1024px) {
   .section {
-    padding: 2rem 5rem; /* Reduce horizontal and vertical padding for tablets */
+      padding: 0rem 6rem;
   }
 }
 
-/* Styles for phones and very small screens */
-@media (max-width: 480px) {
+/* Small screens (phones, smaller tablets) */
+@media (max-width: 768px) {
   .section {
-    padding: 1.5rem 1rem; /* Further reduce padding for small devices */
+      padding: 0rem 3rem;
   }
 }
+
+/* Extra small screens (mobile phones) */
+@media (max-width: 480px) {
+  .section {
+      padding: 1.5rem 1.5rem;
+  }
+}
+
 
 
 .active {
@@ -111,31 +113,44 @@ header {
   position: absolute;
   overflow: visible;
 }
-.main-button-container {
+
+.header{
+  /*position: fixed; Keeps header at the top while scrolling */
   top: 0;
-  position: absolute;
-  padding: 2rem; /* Default padding for larger screens */
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100px; /* Adjust height as needed */
   display: flex;
+  justify-content: center; /* Centers content horizontally */
   align-items: center;
-  justify-content: space-between; /* Space out logo and cart button */
-  box-sizing: border-box; /* Include padding in width */
+  padding-left: 30px;
+  padding-right: 30px;
+  z-index: 1000; /* Keeps it above other content */    
+      
+  
+  /*border-bottom: 2px solid #ddd;
+  background-color: #f8f8f8;*/  
+}
+
+
+.main-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Keeps content within a max width */
 }
 
 .home-button-con {
-  position: relative;
 
   .home-button {
     transition: all 0.2s ease-in-out;
-    width: clamp(80px, 10vw, 120px); /* Dynamic width for scaling */
-    cursor: pointer;
+
 
     img {
-      height: auto; /* Maintain aspect ratio */
-      width: 100%;
-      object-fit: contain; /* Scale image without distortion */
-      text-align: center;
+      width: 120px; /* Adjust logo size */
+      height: auto;
+      cursor: pointer;
     }
   }
 

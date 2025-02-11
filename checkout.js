@@ -11,14 +11,14 @@ const rentalBody = document.querySelector(".rental-con")
 const checkoutItems = document.querySelector(".checkout-items");
 
 
+
 // Home button Switch & 
-document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "index.html"});
+document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "home.html"});
 
 document.getElementById("shopping-cart").addEventListener("click",()=>{window.location.href = "rental.html"});
 
 const storedUser = JSON.parse(sessionStorage.getItem('checkout'));
-console.log("List information")
-console.log(storedUser);
+
 
 
 
@@ -33,9 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateErrorSpan = document.getElementById("date-error");
     console.log(form);
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         let isValid = true;
-        let errorMessage = "";
+        let errorMessage = "";            
+        event.preventDefault();
 
         // Validate Full Name
         if (nameInput.value.trim() === "") {
@@ -84,13 +85,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // If form is not valid, prevent submission and show errors
         if (!isValid) {
-            event.preventDefault();
             alert(errorMessage);
         }
+
+        // Calculate the the total cost & format the checkout-items into a html.
+        let totalPrice = 0;
+        checkout_list = `<div>`
+        for (const [key,value] of Object.entries(storedUser)){
+            // Calculate total value:
+            var itemised_total = Number(value['price'])*Number(value['quantity']);
+            totalPrice = totalPrice + itemised_total
+            checkout_list+="Item: "+ value["name"]+" | Quantity: "+value["quantity"]+" | total: $"+itemised_total+"<br/>"
+        }
+        checkout_list+=("</div>")
+
+        // Get form ready as a dict object:
+        var formData = new FormData(form);
+        formData.append("checkout_list",checkout_list);
+        formData.append("total",totalPrice);
+        var formObject = Object.fromEntries(formData.entries());
+
+
+        // Load all keys from emailjs using config file. 
+        let config;
+        try {
+            const response = await fetch("config.json");
+            config = await response.json();
+        } catch (error) {
+            console.error("Error loading config.json:", error);
+            return;
+        }
+    
+        emailjs.init(config.EMAILJS_PUBLIC); // Initialize EmailJS
+        
+        // Send email
+        emailjs.send(config.EMAILJS_SERVICE, config.EMAILJS_TEMPLATE_CHECKOUT, formObject)
+        .then(function() {
+          alert("Order submitted successfully! We'll contact you soon.");
+            form.reset();
+        }, function(error) {
+          alert("Oops! Something went wrong. Please try again.");
+          console.error("EmailJS Error:", error);
+        });
+
+        
+        
     });
 });
 
-  
+
 function checkoutCart(){
     let totalPrice = 0;
 
