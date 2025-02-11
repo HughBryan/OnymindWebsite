@@ -13,7 +13,7 @@ const checkoutItems = document.querySelector(".checkout-items");
 
 
 // Home button Switch & 
-document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "home.html"});
+document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "index.html"});
 
 document.getElementById("shopping-cart").addEventListener("click",()=>{window.location.href = "rental.html"});
 
