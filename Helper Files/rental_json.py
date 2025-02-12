@@ -32,7 +32,7 @@ for folder in os.listdir(path):
                 data["image"] = file_path
                 price = file_path.strip(".webp").strip(".jpeg").strip(".jpg").split("$")
                 data["price"] = price[len(price)-1].strip()
-                name = file_path.split("\uf022\uf022")[0].split("/")
+                name = file_path.split("__")[0].split("/")
                 name = name[len(name)-1].replace(".","").replace("_","").strip()
                 data['name'] =name
                 

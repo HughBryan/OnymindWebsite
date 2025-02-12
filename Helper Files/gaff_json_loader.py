@@ -26,7 +26,7 @@ for folder in os.listdir(path):
     try:
         print(folder_path)
         file_name_sections = folder.split("/")
-        title = file_name_sections[len(file_name_sections)-1].split("\uf022\uf022")
+        title = file_name_sections[len(file_name_sections)-1].split("__")
         data["title"] = title[0]
 
 
