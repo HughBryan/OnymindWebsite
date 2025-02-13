@@ -40,11 +40,13 @@ function openCartModal() {
     }
   });
   
+
+
+
 openShopping.addEventListener("click",openCartModal);
 
 
 let rental_products = null;
-
 // Function to load all the rental products from the JSON.
 function loadRental()
 {
@@ -94,9 +96,9 @@ function addRentalProducts(rental_products){
     }
 }
 
+
+
 // create checkout list:
-
-
 let listcards = JSON.parse(sessionStorage.getItem('checkout'))
 if (listcards == null){
     listcards = {};
@@ -153,7 +155,7 @@ function reloadCart(){
     cartNumber.textContent = count
 
     
-
+    updateCheckoutButton()
 }
 
 // Is the remove button in the shopping cart. 
@@ -173,6 +175,20 @@ function removeButton(button){
     reloadCart()
 
 }
+
+
+// Function that only lets the user checkout if they have more than 1 item. 
+function updateCheckoutButton() {
+    const checkoutButton = document.getElementById("checkout-button");
+    
+    console.log(listcards)
+    if (Object.keys(listcards).length
+    > 0) {
+      checkoutButton.disabled = false;
+    } else {
+      checkoutButton.disabled = true;
+    }
+  }
 
 
 loadRental();

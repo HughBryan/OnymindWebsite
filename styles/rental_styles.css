@@ -162,12 +162,13 @@ a {
 
 .shopping-cart {
   position: relative;
+  float: right;
 
   .cart-con {
     background: var(--color-primary);
     cursor: pointer;
-    width: clamp(40px, 5vw, 55px); /* Dynamic width for scaling */
-    height: clamp(40px, 5vw, 55px); /* Dynamic height for scaling */
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -175,20 +176,17 @@ a {
     box-shadow: var(--box-shadow-1);
     border: 1px solid var(--color-gray-1);
     transition: all 0.2s ease-in-out;
-
     img {
-      width: 60%; /* Scale image proportionally within the container */
-      height: auto; /* Maintain aspect ratio */
-      object-fit: contain; /* Prevent distortion */
+      color: black;
     }
   }
-
   .cart-con:hover {
     color: var(--color-secondary-1);
     transform: translateY(-2px);
     border: 1px solid var(--color-secondary-1);
   }
 }
+
 
 .cart-count {
   font-family: Arial, Helvetica, sans-serif;
