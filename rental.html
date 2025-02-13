@@ -54,18 +54,32 @@
           <h1>Rentals</h1>
         </div>
 
-        <div class="rental-con">
+        <!-- Popup Modal -->
+        <div id="cartModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Cart Items</h2>
+              <span class="close" id="closeModalTop">&times;</span>
+            </div>
 
+            <div class="checkout-items-card">
+              <div class ="checkout-summary">
+                <!-- Cart items will be listed here -->
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <div class = "checkout-button button" id = "checkout-button">
+              <p >Checkout: <span class="total" id = "total">$0</span> </p>
+              </div>
+              
+            </div>
+          </div>
         </div>
 
-        <div class="rental-card">
-          <h1>Cart</h1>
-          <ul class="listCard"></ul>
 
-          <div class="checkout">
-            <div class="total" id = "total">$0</div>
-            <div class="closeShopping">Close</div>
-          </div>
+        <!-- Will contain all rental products -->
+        <div class="rental-con">
         </div>
       </section>
 

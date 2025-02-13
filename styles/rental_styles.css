@@ -63,6 +63,7 @@ a {
   box-sizing: border-box; /* Include padding and borders in width/height calculations */
 }
 
+
 /* Medium screens (tablets, small desktops) */
 @media (max-width: 1024px) {
   .section {
@@ -72,18 +73,17 @@ a {
 
 /* Small screens (phones, smaller tablets) */
 @media (max-width: 768px) {
-  .section {
+  .section{
       padding: 0rem 3rem;
   }
 }
 
 /* Extra small screens (mobile phones) */
 @media (max-width: 480px) {
-  .section {
+  .section{
       padding: 1.5rem 1.5rem;
   }
 }
-
 
 
 .active {
@@ -365,217 +365,247 @@ button:active {
 }
 
 
-.rental-card {
+
+
+/* Modal Container */
+.modal {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  display: none; /* Hidden by default */
   position: fixed;
+  z-index: 1000; /* Ensure it’s above other elements */
+  left: 0;
   top: 0;
-  left: 100%;
-  width: 500px;
-  background-color: var(--color-gray-1);
-  height: 100vh;
-  transition: 0.5s;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  /* Add shadow for better visual distinction */
-  overflow-y: auto;
-  /* Allow scrolling if content exceeds card height */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 2rem 10rem; /* Default padding for larger screens */
+  
+}
 
-  h1 {
-    color: var(--color-primary);
-    font-weight: 400;
-    /* Use slightly heavier font weight for readability */
-    margin: 0;
-    padding: 20px;
-    height: auto;
-    /* Dynamic height for better responsiveness */
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    /* Ensure the title stands out */
-    border-bottom: 1px solid var(--color-secondary-2);
-    /* Visual separation */
-  }
-
-  .listCard li {
-    display: flex;
-    /* Use Flexbox for horizontal alignment */
-    align-items: center;
-    /* Vertically align items */
-    justify-content: space-between;
-    /* Space out items */
-    height: auto;
-    /* Flexible height based on content */
-    padding: 10px 20px;
-    /* Add inner spacing */
-    background-color: #f9f9f9;
-    /* Light background */
-    border: 1px solid #ddd;
-    /* Subtle border for separation */
-    border-radius: 8px;
-    /* Rounded corners */
-    margin-bottom: 15px;
-    /* Space between listcards */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow */
-    font-size: calc(12px + 0.5vw);
-    /* Scales with screen size */
-
-    .image {
-      flex: 1;
-      /* Allow image container to adjust proportionally */
-      max-width: 100px;
-      /* Optional: Restrict max width */
-      height: auto;
-      /* Maintain aspect ratio */
-      margin-right: 15px;
-
-      /* Space between image and text */
-      img {
-        width: 100%;
-        /* Make image fill container */
-        height: auto;
-        /* Maintain aspect ratio */
-        object-fit: cover;
-        /* Ensure the image covers the container without distortion */
-        border-radius: 5px;
-        /* Optional: Rounded corners */
-      }
-    }
-
-    div {
-      flex: 2;
-      /* Equal space for all divs */
-      text-align: center;
-      /* Center align text within each div */
-      height: 100%;
-      /* Match the listcard height */
-      display: flex;
-      /* Use Flexbox to align content inside */
-      justify-content: center;
-      /* Center content horizontally */
-      align-items: center;
-      /* Center content vertically */
-      padding: 5px;
-      /* Add inner spacing */
-      font-size: small;
-    }
-
-    button {
-      transition: all 0.2s ease-in-out;
-      flex: 0;
-      /* Allow the button to size itself */
-      padding: 10px;
-      /* Add padding for clickability */
-      background-color: transparent;
-      /* Transparent background */
-      border: none;
-      /* Remove border */
-      cursor: pointer;
-      /* Pointer cursor on hover */
-      font-size: 1.5rem;
-      /* Size of icon */
-      color: var(--color-gray-1);
-      /* Icon color */
-      display: flex;
-      /* Ensure icon aligns properly */
-      align-items: center;
-      /* Center icon vertically */
-      justify-content: center;
-      /* Center icon horizontally */
-    }
-
-    button:hover {
-      cursor: pointer;
-      color: var(--color-secondary-1);
-      transform: translateY(-2px);
-    }
-
-    img {
-      width: 90%;
-      height: auto;
-      /* Maintain aspect ratio */
-      border-radius: 4px;
-      /* Match card's rounded corners */
-    }
-  }
-
-  .listCard li:first-child {
-    margin-top: 10px;
-    /* Add top margin to first item for spacing */
-  }
-
-  /* Add a responsive design for smaller screens */
-  @media (max-width: 768px) {
-    .rental-card {
-      width: 100%;
-      /* Full width for smaller screens */
-      left: 0;
-      /* Ensure card is visible */
-    }
-
-    .rental-card h1 {
-      font-size: 20px;
-      /* Slightly smaller title */
-    }
-
-    .rental-card .listCard li {
-      grid-template-columns: 80px 1fr;
-      /* Simplify layout */
-    }
-  }
-
-  .checkout {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Soft shadow */
-    margin-top: 20px;
-
-    div {
-      display: flex;
-      width: 100%;
-      height: 70px;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      cursor: pointer;
-      border: 1px solid black;
-      font-size: 30px;
-      border-radius: 5px;
-    }
-
-    .closeShopping {
-      background-color: var(--color-gray-2);
-      color: var(--color-primary);
-      transition: 0.2s;
-    }
-
-    .closeShopping:hover {
-      color: var(--color-secondary-1);
-      transform: translateY(-2px);
-    }
-
-    .total {
-      background-color: var(--color-gray-2);
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--color-primary);
-      transition: 0.2s;
-    }
-
-    .total:hover {
-      color: var(--color-secondary-1);
-      transform: translateY(-2px);
-    }
+/* Medium screens (tablets, small desktops) */
+@media (max-width: 1024px) {
+  .modal {
+      padding: 0rem 6rem;
   }
 }
 
-.active-rental .rental-card {
-  left: calc(100% - 500px);
+/* Small screens (phones, smaller tablets) */
+@media (max-width: 768px) {
+  .modal{
+      padding: 0rem 3rem;
+  }
 }
 
-.active-rental .rental-con {
-  transform: translateX(-200px);
+/* Extra small screens (mobile phones) */
+@media (max-width: 480px) {
+  .modal{
+      padding: 1.5rem 1.5rem;
+  }
 }
+
+.checkout-items-card{
+  max-height: 600px; /* Limit the height of the card */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid #ddd; /* Optional: Add a border for separation */
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Optional background for better contrast */
+}
+
+.checkout-summary {
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.button {
+  background-color: var(--color-gray-2);
+  color: #fff;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-secondary-1);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  input, select, textarea {
+    font-size: 0.9rem;
+  }
+}
+
+li {
+  display: flex; /* Use Flexbox for horizontal alignment */
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Space out items */
+  height: auto; /* Flexible height based on content */
+  padding: 10px 20px; /* Add inner spacing */
+  background-color: #f9f9f9; /* Light background */
+  border: 1px solid #ddd; /* Subtle border for separation */
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 15px; /* Space between listcards */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-size: calc(12px + 0.5vw); /* Scales with screen size */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+li .image {
+  flex: 1; /* Allow image container to adjust proportionally */
+  max-width: 100px; /* Optional: Restrict max width */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 15px; /* Space between image and text */
+}
+
+li .image img {
+  width: 100%; /* Make image fill container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 5px; /* Optional: Rounded corners */
+}
+
+li div {
+  flex: 2; /* Equal space for all divs */
+  text-align: center; /* Center align text within each div */
+  height: 100%; /* Match the listcard height */
+  display: flex; /* Use Flexbox to align content inside */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding: 5px; /* Add inner spacing */ 
+  font-size: small;
+}
+
+/* Media Query for Smaller Devices */
+@media (max-width: 768px) {
+  li {
+      padding: 8px 16px; /* Reduce padding for smaller screens */
+      font-size: calc(10px + 0.5vw); /* Slightly smaller text */
+  }
+
+  li .image {
+      max-width: 80px; /* Reduce image size on smaller screens */
+      margin-right: 10px; /* Reduce space between image and text */
+  }
+
+  li div {
+      font-size: 12px; /* Adjust text size for better readability */
+  }
+}
+
+/* Media Query for Extra Small Devices */
+@media (max-width: 480px) {
+  li {
+      padding: 6px 12px; /* Further reduce padding */
+      font-size: calc(8px + 0.5vw); /* Smaller text on mobile */
+  }
+
+  li .image {
+      max-width: 60px; /* Reduce image size further on mobile */
+      margin-right: 5px; /* Reduce space between image and text */
+  }
+
+  li div {
+      font-size: 10px; /* Adjust text size for mobile */
+  }
+}
+
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slide-down 0.3s ease-out;
+  
+}
+
+
+
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.close {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  border: none;
+  background: none;
+}
+
+.close:hover {
+  color: red;
+}
+
+
+
+/* Modal Footer */
+.modal-footer {
+  padding-top:1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .button
+  {
+    transition: all 0.2s ease-in-out;
+    padding: 8px 12px;
+    background-color:var(--color-secondary-1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;    
+  }
+
+  .button:hover {
+    cursor: pointer;
+    background-color: var(--color-secondary-2);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+

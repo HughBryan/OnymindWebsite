@@ -310,6 +310,7 @@
       font-size: 0.9rem;
     }
   }
+  
   li {
     display: flex; /* Use Flexbox for horizontal alignment */
     align-items: center; /* Vertically align items */

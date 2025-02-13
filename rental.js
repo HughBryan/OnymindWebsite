@@ -5,7 +5,7 @@ const openShopping = document.querySelector(".shopping-cart");
 const cartNumber = document.getElementById("cart-count");
 const closeShopping = document.querySelector(".closeShopping");
 const list = document.querySelector(".list");
-const listcard = document.querySelector(".listCard");
+const listcard = document.querySelector(".checkout-summary");
 const total = document.querySelector(".total");
 const quantity = document.querySelector(".quanity");
 const rentalBody = document.querySelector(".rental-con")
@@ -16,9 +16,31 @@ const rentalBody = document.querySelector(".rental-con")
 document.getElementById("home-button-con").addEventListener("click",()=>{window.location.href = "index.html"});
 
 // Checkout page button
-document.getElementById("total").addEventListener("click",()=>{window.window.location.href = "checkout.html"});
+document.getElementById("checkout-button").addEventListener("click",()=>{window.window.location.href = "checkout.html"});
 
 
+// Open modal function (you can trigger this when a "View Cart" button is clicked)
+function openCartModal() {
+    document.getElementById("cartModal").style.display = "block";
+  }
+  
+  // Close modal
+  function closeCartModal() {
+    document.getElementById("cartModal").style.display = "none";
+  }
+  
+  // Event listeners for close buttons
+  document.getElementById("closeModalTop").addEventListener("click", closeCartModal);
+  
+  // Optional: Close modal when user clicks outside the modal content
+  window.addEventListener("click", function (event) {
+    const modal = document.getElementById("cartModal");
+    if (event.target === modal) {
+      closeCartModal();
+    }
+  });
+  
+openShopping.addEventListener("click",openCartModal);
 
 
 let rental_products = null;
@@ -75,15 +97,12 @@ function addRentalProducts(rental_products){
 // create checkout list:
 
 
-// Function to add a an item to the cart
 let listcards = JSON.parse(sessionStorage.getItem('checkout'))
 if (listcards == null){
     listcards = {};
 };
 
-
-
-
+// Function to add a an item to the cart
 function addToCart(productSection,key){
 
     if (listcards[productSection+key] == null){
@@ -155,48 +174,7 @@ function removeButton(button){
 
 }
 
-// Opens the rental section. 
-function rentalTransition(){
-    openShopping.addEventListener('click', ()=>{
 
-
-        // If rental section is not open, open rental section with the cart open.
-        if (! rentalSection.classList.contains("active"))
-        {
-            sections.forEach((section) => {
-                section.classList.remove("active");
-            })
-            rentalSection.classList.add("active");
-
-            body.classList.add("active-rental");
-        }   
-        // Else, either close or open the cart as the rental page is open.        
-        else{
-
-            if (body.classList.contains("active-rental"))
-            {
-                body.classList.remove("active-rental");
-            }
-            else{
-                body.classList.add("active-rental");
-
-            }            
-        }
-        
-
-
-    });
-
-    closeShopping.addEventListener('click', ()=>{
-        body.classList.remove("active-rental");
-    });
-}
-
-
-
-
-
-rentalTransition();
 loadRental();
 reloadCart();
 
